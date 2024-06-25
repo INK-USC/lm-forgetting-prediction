@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Predicting Example Forgetting in Langauge Model Fine-Tuning">
+  <meta name="keywords" content="Forgetting, langauge model">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project: Predicting Example Forgetting in Langauge Model Fine-Tuning</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" type="image/png" href="static/images/umbrella-with-rain-drops_2614.png">
+  <style>
+    .has-background-light-grey {
+      background-color: #f5f5f5;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Project: Predicting Example Forgetting in Langauge Model Fine-Tuning </h1>
+          
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://xsjin.xyz">Xisen Jin</a><sup></sup>,</span>
+            <span class="author-block">
+              <a href="https://seanre.com">Xiang Ren</a><sup></sup></span>
+        
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">University of Southern California</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/ink-lab/forgetting-prediction"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/ink-lab/forgetting-prediction/data"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div id="arxiv_block"  class="columns">
+
+
+      <div class="column is-one-third">
+        <img src="static/images/arxiv24.png"></img>
+      </div>
+      <div class="column">
+          <h5 class="title is-5">
+            Demystifying Forgetting in Language Model Fine-Tuning with Statistical
+            Analysis of Example Associations
+            </h5>
+          <p>Xisen Jin, Xiang Ren</p>
+          <p>On Arxiv (June 2024)</p> <a href="https://arxiv.org/abs/2406.14026">Paper </a> 
+
+      </div>
+      </div>
+      
+      <div id="icml_block"  class="columns">
+        <div class="column is-one-third">
+            <img src="static/images/icml24.png"></img>
+        </div>
+        <div class="column">
+          <h5 class="title is-5">What Will My Model Forget?
+          Forecasting Forgotten Examples in Language Model Refinement
+          </h5>
+          <p>Xisen Jin, Xiang Ren</p>
+          <p>To Appear at ICML 2024 (Spotlight)</p> <a href="https://arxiv.org/abs/2402.01865">Paper </a> 
+        </div>
+
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+    <article class="message">
+      <div class="message-body">
+        Our research aims for <b>better understanding </b> and <b> targetted mitigation </b> of forgetting in (continual) LM fine-tuning.
+      </div>
+    </article>
+  </div>
+   </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        
+        <div class="content has-text-justified">
+          <p>
+            There has been a growing need for long-term usability of LM systems.
+            Unfortunately, (contiual) fine-tuning risks catastrophic forgetting of past learned
+            knowledge. This is problematic for stable online deployed LM systems, limiting the feasibility of continual fine-tuning in practice. 
+            Understanding what examples will be forgotten enable efficient and targeted mitigation of forgetting (e.g., by replaying these examples).
+          </p>
+          <br>
+          <h5 class="title is-5">Approaches Motivated by Model Update Formulations<br></h5>
+          
+          <p>
+            The reason why certain individual examples are forgotten can be intriguing. 
+            In our <a href="#icml_block">ICML paper</a>, we look into the formulation of model updates where learning a (seemingly) irrlevant example causes another to be forgotten.
+            We build trained approximation of such "ground truth" formulations of forgetting:
+            (1) a model that predicts transfer of logit-changes based on learned example similarity,
+            and (2) a binary classifier of forgetting with learned example dis-similarity. 
+          </p>
+          <br>
+
+          <h5 class="title is-5">Approaches Motivated by Statistics of Forgetting<br></h5>
+          
+          <p>
+           Unlike forgetting of individual examples, we notice the statistical assocations of learned and forgotten examples are usually simple.
+           In our <a href="#arxiv_block">arxiv paper</a> submitted in June 2024, we analyze statistics of forgetting on N upstream examples while the model learns M new tasks
+           with OLMo-7B on OLMo-7B-Instruct models.
+          </p>
+
+          <p>
+            Following our analysis, we predict forgetting when learning a new task with matrix completion over the empirical associations, 
+            analogical to collaborative filtering in recommender systems. On OLMo models, our k-nearest neighbor based prediction model outperforms our prior approaches that
+            rely on trainable LMs.
+           </p>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section  id="app">
+  <div class="container  is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column has-text-centered">
+        <span class="select is-fullwidth">
+
+        <select v-model="selectedDataset" @change="updateHeatmap">
+          <option v-for="(dataset, name) in datasets" :value="name">{{ name }}</option>
+        </select>
+        </span>
+        </div>
+    </div>
+  </div>
+  <div class="container  is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column">
+
+        <div id="heatmap"></div>
+      </div>
+      </div>
+      <br>
+      <br>
+    </div>
+    
+  </div>
+</section>
+
+<section>
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column">
+        
+        <div class="content has-text-justified">
+          <h5 class="title is-5">Targetted Mitigation of Forgetting with by Predicting Forgetting<br></h5>
+          
+          <p>
+            Predicting example forgetting enables simple, efficient and targetted mitigation of forgetting. 
+            We sparsely replay past training examples during continual fine-tuning, priortize examples with higher
+            predicted forgetting. The approach improves over randomly sampling past examples for replay.
+          </p>
+          <br>
+
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Model</th>
+              <th>OLMo-7B <a href="#arxiv_block">[1]</a></th>
+              <th>FLAN-T5-3B <a href="#icml_block">[2]</a></th>
+              <th>FLAN-T5-780M <a href="#icml_block">[2]</a></th>
+            </tr>
+            <tr>
+              <th>Learned / Upstream Data</th>
+              <th>Tulu V2 / Dolma</th>
+              <th>MMLU / P3</th>
+              <th>MMLU / P3</th>
+            </tr>
+            <tr>
+              <th>Metrics</th>
+              <th>Log PPL</th>
+              <th>Exact Match Drop %</th>
+              <th>Exact Match Drop %</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No replay</td>
+              <td>2.3092</td>
+              <td>4.384</td>
+              <td>5.463</td>
+            </tr>
+            <tr>
+              <td>Random Replay</td>
+              <td>2.2747</td>
+              <td>1.910</td>
+              <td>3.267</td>
+            </tr>
+            <tr>
+              <td>Replay w/ Prediction</td>
+              <td><b>2.2730</b></td>
+              <td><b>0.138</b></td>
+              <td><b>0.301</b></td>
+            </tr>
+            <tr class="has-background-light-grey">
+              <td>Replay w/ GT Forgetting</td>
+              <td>2.2711</td>
+              <td>0.030</td>
+              <td>0.189</td>
+            </tr>
+          </tbody>
+          </table>
+
+        </div>
+        <br>
+
+        <p> 
+          
+          With better understanding and targeted mitigation of forgetting, 
+          our research tries to facilitate broader application of continual learning of language models in practice, </p>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{Jin2024DemystifyingFI,
+  title={Demystifying Forgetting in Language Model Fine-Tuning with Statistical Analysis of Example Associations},
+  author={Xisen Jin and Xiang Ren},
+  year={2024},
+  volume={abs/2406.14026},
+  url={https://arxiv.org/abs/2406.14026}
+}
+      
+@article{Jin2024WhatWM,
+  title={What Will My Model Forget? Forecasting Forgotten Examples in Language Model Refinement},
+  author={Xisen Jin and Xiang Ren},
+  journal={ArXiv},
+  year={2024},
+  volume={abs/2402.01865},
+  url={https://arxiv.org/abs/2402.01865}
+}</code></pre>
+  </div>
+</section>
+
+
+<script>
+
+  async function load_data(filename) {
+      try {
+          const response = await fetch(`static/visualization/${filename}.json`);
+          const json_data = await response.json();
+          return json_data;
+      } catch (error) {
+          console.error('Error loading data:', error);
+          return [];
+      }
+  }
+
+  new Vue({
+    el: '#app',
+    data: {
+        datasets: {
+            'OLMo-7B': 'olmo-7b-viz',
+            'OLMo-7B-Instruct': 'olmo-7b-inst-viz'
+        },
+        selectedDataset: 'OLMo-7B',
+        json_data: null,
+        pt_ds_name: {
+          'OLMo-7B': 'Dolma',
+          'OLMo-7B-Instruct': 'Tulu'
+        }
+    },
+    computed: {
+      
+    },
+    methods: {
+      async updateHeatmap() {
+            this.json_data = await load_data(this.datasets[this.selectedDataset]);
+            this.createHeatmap();
+        },
+      async createHeatmap() {
+    const viz_data = this.json_data;
+
+    // Define x-axis and y-axis labels
+    const xLabels = viz_data["pt_tasks"];
+    const yLabels = viz_data['ocl_tasks'];
+    const yLabels_short = viz_data['ocl_tasks_short'];
+
+    const xTickStep = 50; // Adjust the step to control sparsity
+    const yTickStep = 6; // Adjust the step to control sparsity
+
+    const xTickVals = xLabels.map((label, index) => index).filter(index => index % xTickStep === 0);
+    const xTickText = xLabels.filter((label, index) => index % xTickStep === 0);
+
+    const yTickVals = yLabels_short.map((label, index) => index).filter(index => index % yTickStep === 0);
+    const yTickText = yLabels_short.filter((label, index) => index % yTickStep === 0);
+
+
+    const customColorscale = [
+        [0, 'blue'],   // Start with blue
+        [0.5, 'white'], // Transition to white in the middle
+        [1, 'red']     // End with red
+    ];
+
+
+    var data = [
+        {
+            z: viz_data["arr"],
+            x: xLabels,
+            y: yLabels,
+            zmin: -0.3,
+            zmax: 0.3,
+            type: 'heatmap',
+            colorscale: customColorscale
+        }
+    ];
+
+    var layout = {
+        title: `${this.selectedDataset}, Log-Perplexity Increase on ${this.pt_ds_name[this.selectedDataset]} while learning new instruction tuning tasks`,
+        xaxis: {
+            title: 'Upstream Pretraining Examples',
+            tickmode: 'array',
+            tickvals: xTickVals,
+            ticktext: xTickText,
+            automargin: true // Automatically adjust margins to fit labels
+            
+        },
+        yaxis: {
+            title: 'Learned Tasks',
+            tickmode: 'array',
+            tickvals: yTickVals,
+            ticktext: yTickText,
+            automargin: true // Automatically adjust margins to fit labels
+        }
+    };
+
+    Plotly.newPlot('heatmap', data, layout);
+
+ 
+    },
+    },
+    mounted() {
+          this.updateHeatmap();
+          
+    }
+  })
+
+</script>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
