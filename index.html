@@ -147,10 +147,10 @@
         
         <div class="content has-text-justified">
           <p>
-            There has been a growing need for long-term usability of LM systems.
-            Unfortunately, (contiual) fine-tuning risks catastrophic forgetting of past learned
-            knowledge. This is problematic for stable online deployed LM systems, limiting the feasibility of continual fine-tuning in practice. 
-            Understanding what examples will be forgotten enable efficient and targeted mitigation of forgetting (e.g., by replaying these examples).
+            The long-term usability of language model (LM) systems is increasingly important.
+            However, continual fine-tuning poses the risk of catastrophic forgetting, where previously learned knowledge is lost.
+            This is problematic for stable online deployed LM systems, limiting the feasibility of continual fine-tuning in practice. 
+            Understanding what examples will be forgotten enables efficient and targeted mitigation of forgetting (e.g., by replaying these examples).
           </p>
           <br>
           <h5 class="title is-5">Approaches Motivated by Model Update Formulations<br></h5>
@@ -158,7 +158,7 @@
           <p>
             The reason why certain individual examples are forgotten can be intriguing. 
             In our <a href="#icml_block">ICML paper</a>, we look into the formulation of model updates where learning a (seemingly) irrlevant example causes another to be forgotten.
-            We build trained approximation of such "ground truth" formulations of forgetting:
+            We build trained approximations of such "ground truth" formulations of forgetting:
             (1) a model that predicts transfer of logit-changes based on learned example similarity,
             and (2) a binary classifier of forgetting with learned example dis-similarity. 
           </p>
@@ -224,8 +224,8 @@
           
           <p>
             Predicting example forgetting enables simple, efficient and targetted mitigation of forgetting. 
-            We sparsely replay past training examples during continual fine-tuning, priortize examples with higher
-            predicted forgetting. The approach improves over randomly sampling past examples for replay.
+            We sparsely replay past training examples during continual fine-tuning, priortizing examples with higher
+            predicted forgetting. The strategy improves over randomly sampling past examples for replay.
           </p>
           <br>
 
@@ -283,9 +283,9 @@
 
         <p> 
           
-          With better understanding and targeted mitigation of forgetting, 
-          our research tries to facilitate broader application of continual learning of language models in practice, </p>
-
+          By enhancing understanding and developing targeted strategies to mitigate forgetting, 
+          our research aims for broader applications of continual learning in practical
+          language model development and maintainance.
       </div>
 
     </div>
